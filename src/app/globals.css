@@ -1307,8 +1307,7 @@ footer {
 }
 
 @media (max-width: 768px) {
-  .hero-content .hero-badge.desktop-only,
-  .hero-content .hero-buttons.desktop-only {
+  .desktop-only {
     display: none !important;
   }
 
