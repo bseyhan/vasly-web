@@ -1302,25 +1302,14 @@ footer {
   display: none;
 }
 
-.desktop-only {
-  display: block;
-}
-
-.mobile-only {
-  display: none;
-}
-
 .hero-mobile-bottom {
   display: none;
 }
 
 @media (max-width: 768px) {
-  .desktop-only {
+  .hero-content .hero-badge.desktop-only,
+  .hero-content .hero-buttons.desktop-only {
     display: none !important;
-  }
-
-  .mobile-only {
-    display: block !important;
   }
 
   .hero-mobile-bottom {

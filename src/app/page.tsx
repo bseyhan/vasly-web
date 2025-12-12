@@ -131,7 +131,7 @@ export default function Home() {
           </div>
           
           {/* Mobile only - badge and buttons after phone */}
-          <div className="mobile-hero-footer">
+          <div className="hero-mobile-bottom">
             <div className="hero-badge">🇳🇴 Laget for norske bilførere</div>
             <div className="hero-buttons">
               <Link href="#download" className="btn-primary">
