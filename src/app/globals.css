@@ -1300,7 +1300,12 @@ footer {
 
 @media (max-width: 768px) {
   nav {
-    padding: 1rem 1.5rem;
+    padding: 0.5rem 1rem;
+    height: 70px;
+  }
+
+  .logo-img {
+    height: 50px;
   }
 
   .nav-links, .nav-cta {
@@ -1312,7 +1317,82 @@ footer {
   }
 
   .hero {
-    padding: 5rem 1.5rem 3rem;
+    padding: 6rem 1.5rem 3rem;
+  }
+
+  .phone-frame {
+    width: 240px;
+    height: 500px;
+    border-radius: 38px;
+  }
+
+  .phone-screen {
+    border-radius: 32px;
+  }
+
+  .phone-notch {
+    width: 80px;
+    height: 24px;
+  }
+
+  .app-screen {
+    padding: 2.5rem 0.75rem 0.75rem;
+  }
+
+  .app-greeting {
+    font-size: 1.1rem;
+  }
+
+  .car-card-main {
+    padding: 0.75rem;
+    border-radius: 16px;
+  }
+
+  .car-brand {
+    font-size: 0.95rem;
+  }
+
+  .car-model {
+    font-size: 0.6rem;
+  }
+
+  .health-card {
+    padding: 0.65rem 0.75rem;
+    border-radius: 12px;
+  }
+
+  .health-circle {
+    width: 40px;
+    height: 40px;
+  }
+
+  .health-circle::before {
+    width: 32px;
+    height: 32px;
+  }
+
+  .health-value {
+    font-size: 0.65rem;
+  }
+
+  .status-card {
+    padding: 0.65rem;
+    border-radius: 12px;
+  }
+
+  .status-icon {
+    width: 24px;
+    height: 24px;
+    font-size: 0.75rem;
+  }
+
+  .status-value {
+    font-size: 0.85rem;
+  }
+
+  .tips-card {
+    padding: 0.6rem 0.75rem;
+    border-radius: 12px;
   }
 
   .features, .how-it-works, .integrations, .cta, .ai-mechanic {
