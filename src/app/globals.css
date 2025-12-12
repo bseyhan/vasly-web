@@ -1311,7 +1311,21 @@ footer {
     display: none !important;
   }
 
+  .hero-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero-content {
+    order: 1;
+  }
+
+  .hero-visual {
+    order: 2;
+  }
+
   .hero-mobile-bottom {
+    order: 3;
     display: flex;
     flex-direction: column;
     align-items: center;
