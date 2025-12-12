@@ -1242,11 +1242,11 @@ footer {
   }
 
   .hero-content {
-    order: 1;
+    order: 0;
   }
 
   .hero-visual {
-    order: 0;
+    order: 1;
     margin-bottom: 2rem;
   }
 
@@ -1305,11 +1305,11 @@ footer {
 @media (max-width: 768px) {
   nav {
     padding: 0.5rem 1rem;
-    height: 80px;
+    height: 90px;
   }
 
   .logo-img {
-    height: 60px;
+    height: 70px;
   }
 
   .nav-links, .nav-cta {
