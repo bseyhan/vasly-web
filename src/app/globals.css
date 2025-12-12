@@ -1298,22 +1298,38 @@ footer {
   }
 }
 
+.nav-cta-mobile {
+  display: none;
+}
+
 @media (max-width: 768px) {
   nav {
     padding: 0.5rem 1rem;
-    height: 70px;
+    height: 80px;
   }
 
   .logo-img {
-    height: 50px;
+    height: 60px;
   }
 
   .nav-links, .nav-cta {
     display: none;
   }
 
+  .nav-cta-mobile {
+    display: inline-flex;
+    background: var(--accent-navy);
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.85rem;
+    box-shadow: 0 4px 12px rgba(10, 31, 68, 0.25);
+  }
+
   .mobile-toggle {
-    display: block;
+    display: none;
   }
 
   .hero {

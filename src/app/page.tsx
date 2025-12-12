@@ -14,11 +14,7 @@ export default function Home() {
           <li><Link href="#how-it-works">Slik fungerer det</Link></li>
         </ul>
         <Link href="#download" className="nav-cta">Last ned gratis</Link>
-        <button className="mobile-toggle" aria-label="Meny">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
+        <Link href="#download" className="nav-cta-mobile">Last ned</Link>
       </nav>
 
       {/* Hero Section */}
