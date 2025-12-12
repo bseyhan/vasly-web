@@ -1,0 +1,5 @@
+3. Deploy til Vercel
+Gå til vercel.com
+"Import Project" → Velg vasly-web fra GitHub
+Klikk "Deploy"
+Koble til custom domain vasly.no
