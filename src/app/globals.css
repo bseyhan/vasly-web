@@ -1302,7 +1302,47 @@ footer {
   display: none;
 }
 
+.desktop-only {
+  display: block;
+}
+
+.mobile-only {
+  display: none;
+}
+
+.hero-mobile-bottom {
+  display: none;
+}
+
 @media (max-width: 768px) {
+  .desktop-only {
+    display: none !important;
+  }
+
+  .mobile-only {
+    display: block !important;
+  }
+
+  .hero-mobile-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    width: 100%;
+  }
+
+  .hero-mobile-bottom .hero-badge {
+    display: inline-flex;
+  }
+
+  .hero-mobile-bottom .hero-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    max-width: 280px;
+  }
   nav {
     padding: 0.5rem 1rem;
     height: 90px;
