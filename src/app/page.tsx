@@ -130,9 +130,8 @@ export default function Home() {
             </div>
           </div>
           
-          {/* Mobile only - badge and buttons after phone */}
+          {/* Mobile only - buttons after phone */}
           <div className="hero-mobile-bottom">
-            <div className="hero-badge">🇳🇴 Laget for norske bilførere</div>
             <div className="hero-buttons">
               <Link href="#download" className="btn-primary">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
