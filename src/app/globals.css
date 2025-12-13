@@ -1170,6 +1170,12 @@ nav {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
+.store-btn.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
 .store-btn svg {
   width: 26px;
   height: 26px;
