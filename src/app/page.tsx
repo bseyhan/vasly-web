@@ -9,9 +9,8 @@ export default function Home() {
           <img src="/vasly-logo.png" alt="Vasly" className="logo-img" />
         </Link>
         <ul className="nav-links">
-          <li><Link href="#ai-mechanic">AI-mekaniker</Link></li>
-          <li><Link href="#features">Funksjoner</Link></li>
           <li><Link href="#how-it-works">Slik fungerer det</Link></li>
+          <li><Link href="/support">FAQ</Link></li>
         </ul>
         <Link href="#download" className="nav-cta">Last ned gratis</Link>
         <Link href="#download" className="nav-cta-mobile">Last ned</Link>
@@ -369,7 +368,7 @@ export default function Home() {
             <div className="footer-links">
               <Link href="/personvern">Personvern</Link>
               <Link href="/vilkar">Vilkår</Link>
-              <Link href="/support">Kontakt</Link>
+              <Link href="/support">Support</Link>
             </div>
           </div>
           <div className="footer-right">
