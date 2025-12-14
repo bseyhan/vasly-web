@@ -124,7 +124,7 @@ export default function Personvern() {
             </div>
           </div>
           <div className="footer-right">
-            © 2025 Vasly.
+            © 2025 Vasly
           </div>
         </div>
       </footer>
