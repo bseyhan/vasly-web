@@ -307,7 +307,7 @@ export default function Home() {
               <div className="step-number">1</div>
               <h3 className="step-title">Last ned appen</h3>
               <p className="step-description">
-                Gratis på App Store og Google Play. Opprett konto med e-post eller logg inn med Google.
+                Gratis på App Store (Google Play kommer snart). Opprett konto med e-post eller logg inn med Google.
               </p>
             </div>
             <div className="step">
