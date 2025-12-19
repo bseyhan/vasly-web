@@ -1,5 +1,4 @@
 import Link from "next/link";
-import DownloadCount from "./components/DownloadCount";
 
 export default function Home() {
   return (
@@ -21,10 +20,7 @@ export default function Home() {
       <section className="hero">
         <div className="hero-container">
           <div className="hero-content">
-            <div className="hero-badges desktop-only">
-              <div className="hero-badge">🇳🇴 Laget for norske bilførere</div>
-              <DownloadCount />
-            </div>
+            <div className="hero-badge desktop-only">🇳🇴 Laget for norske bilførere</div>
             <h1>Hold bilen din i <span>toppform</span></h1>
             <p className="hero-description">
               Vasly hjelper deg med å huske EU-kontroll og bytte dekk til riktig tid – 
