@@ -191,6 +191,13 @@ nav {
   }
 }
 
+.hero-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
 .hero-badge {
   display: inline-flex;
   align-items: center;
@@ -201,7 +208,18 @@ nav {
   font-size: 0.85rem;
   color: var(--accent-navy);
   font-weight: 600;
-  margin-bottom: 1.5rem;
+}
+
+.download-count-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #4ade80, #22c55e);
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  color: white;
+  font-weight: 600;
 }
 
 .hero h1 {
