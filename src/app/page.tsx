@@ -366,6 +366,7 @@ export default function Home() {
               <img src="/vasly-logo.png" alt="Vasly" className="logo-img" />
             </Link>
             <div className="footer-links">
+              <Link href="/om">Om Vasly</Link>
               <Link href="/personvern">Personvern</Link>
               <Link href="/vilkar">Vilkår</Link>
               <Link href="/support">Support</Link>
