@@ -6,7 +6,7 @@ const SUPABASE_FUNCTION_URL = 'https://urdaisyjzymmifvatrqx.supabase.co/function
 interface ShareData {
   vehicle: {
     registration_number: string;
-    brand: string;
+    make: string;
     model: string;
     year: number;
     color?: string;
@@ -52,11 +52,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
   
   return {
-    title: `${data.vehicle.brand} ${data.vehicle.model} - Salgsmappe | Vasly`,
-    description: `Dokumentasjon for ${data.vehicle.brand} ${data.vehicle.model} (${data.vehicle.year})`,
+    title: `${data.vehicle.make} ${data.vehicle.model} - Salgsmappe | Vasly`,
+    description: `Dokumentasjon for ${data.vehicle.make} ${data.vehicle.model} (${data.vehicle.year})`,
     openGraph: {
-      title: `${data.vehicle.brand} ${data.vehicle.model} - Salgsmappe`,
-      description: `Se dokumentasjon for ${data.vehicle.brand} ${data.vehicle.model} (${data.vehicle.year})`,
+      title: `${data.vehicle.make} ${data.vehicle.model} - Salgsmappe`,
+      description: `Se dokumentasjon for ${data.vehicle.make} ${data.vehicle.model} (${data.vehicle.year})`,
       type: 'website',
     },
   };
@@ -195,7 +195,7 @@ export default async function SharePage({ params }: PageProps) {
                 color: 'var(--text-primary)',
                 marginBottom: '0.25rem'
               }}>
-                {vehicle.brand} {vehicle.model}
+                {vehicle.make} {vehicle.model}
               </h1>
               <p style={{ color: 'var(--text-muted)', fontSize: '1rem' }}>
                 {vehicle.registration_number} • {vehicle.year}
