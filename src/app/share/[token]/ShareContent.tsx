@@ -95,8 +95,10 @@ export default function ShareContent({ vehicle, documents, expiresAt }: ShareCon
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') closeGallery();
-      if (e.key === 'ArrowLeft') goToPrev();
-      if (e.key === 'ArrowRight') goToNext();
+      if (imageDocuments.length > 1) {
+        if (e.key === 'ArrowLeft') goToPrev();
+        if (e.key === 'ArrowRight') goToNext();
+      }
     };
 
     document.addEventListener('keydown', handleKeyDown);
@@ -108,13 +110,15 @@ export default function ShareContent({ vehicle, documents, expiresAt }: ShareCon
     };
   }, [galleryOpen, closeGallery, goToPrev, goToNext]);
 
-  // Touch handlers for swipe
+  // Touch handlers for swipe - only if multiple images
   const handleTouchStart = (e: React.TouchEvent) => {
-    setTouchStart(e.touches[0].clientX);
+    if (imageDocuments.length > 1) {
+      setTouchStart(e.touches[0].clientX);
+    }
   };
 
   const handleTouchEnd = (e: React.TouchEvent) => {
-    if (touchStart === null) return;
+    if (touchStart === null || imageDocuments.length <= 1) return;
     
     const touchEnd = e.changedTouches[0].clientX;
     const diff = touchStart - touchEnd;
