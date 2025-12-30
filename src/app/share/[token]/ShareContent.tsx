@@ -406,6 +406,7 @@ export default function ShareContent({ vehicle, documents, expiresAt }: ShareCon
         open={galleryOpen}
         close={() => setGalleryOpen(false)}
         index={galleryIndex}
+        on={{ view: ({ index }) => setGalleryIndex(index) }}
         slides={slides}
         plugins={[Captions, Counter]}
         captions={{ 
