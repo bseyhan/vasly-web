@@ -1,13 +1,7 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect, useCallback } from 'react';
 import Link from 'next/link';
-import Lightbox from 'yet-another-react-lightbox';
-import Captions from 'yet-another-react-lightbox/plugins/captions';
-import Counter from 'yet-another-react-lightbox/plugins/counter';
-import 'yet-another-react-lightbox/styles.css';
-import 'yet-another-react-lightbox/plugins/captions.css';
-import 'yet-another-react-lightbox/plugins/counter.css';
 
 interface Vehicle {
   registration_number: string;
@@ -37,6 +31,7 @@ interface ShareContentProps {
 export default function ShareContent({ vehicle, documents, expiresAt }: ShareContentProps) {
   const [galleryOpen, setGalleryOpen] = useState(false);
   const [galleryIndex, setGalleryIndex] = useState(0);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
 
   const expiresDate = new Date(expiresAt);
   const daysLeft = Math.ceil((expiresDate.getTime() - Date.now()) / (1000 * 60 * 60 * 24));
@@ -63,24 +58,13 @@ export default function ShareContent({ vehicle, documents, expiresAt }: ShareCon
 
   const years = Object.keys(grouped).sort((a, b) => parseInt(b) - parseInt(a));
 
-  // Build slides for lightbox - only include documents with valid image URLs
-  // Memoize to keep stable array reference (required by yet-another-react-lightbox)
+  // Build slides for gallery - only include documents with valid image URLs
   const imageDocuments = useMemo(() => 
     documents.filter(doc => 
       doc.url && 
       doc.mime_type.startsWith('image/')
     ), 
     [documents]
-  );
-
-  const slides = useMemo(() => 
-    imageDocuments.map(doc => ({
-      src: doc.url!,
-      alt: doc.title || 'Dokument',
-      title: doc.title || 'Dokument',
-      description: doc.note || undefined,
-    })),
-    [imageDocuments]
   );
 
   // Find the index in imageDocuments for a given document
@@ -92,6 +76,60 @@ export default function ShareContent({ vehicle, documents, expiresAt }: ShareCon
     setGalleryIndex(index);
     setGalleryOpen(true);
   };
+
+  const closeGallery = useCallback(() => {
+    setGalleryOpen(false);
+  }, []);
+
+  const goToPrev = useCallback(() => {
+    setGalleryIndex(prev => (prev > 0 ? prev - 1 : imageDocuments.length - 1));
+  }, [imageDocuments.length]);
+
+  const goToNext = useCallback(() => {
+    setGalleryIndex(prev => (prev < imageDocuments.length - 1 ? prev + 1 : 0));
+  }, [imageDocuments.length]);
+
+  // Keyboard navigation
+  useEffect(() => {
+    if (!galleryOpen) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') closeGallery();
+      if (e.key === 'ArrowLeft') goToPrev();
+      if (e.key === 'ArrowRight') goToNext();
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = '';
+    };
+  }, [galleryOpen, closeGallery, goToPrev, goToNext]);
+
+  // Touch handlers for swipe
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStart === null) return;
+    
+    const touchEnd = e.changedTouches[0].clientX;
+    const diff = touchStart - touchEnd;
+
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) {
+        goToNext();
+      } else {
+        goToPrev();
+      }
+    }
+    setTouchStart(null);
+  };
+
+  const currentImage = imageDocuments[galleryIndex];
 
   return (
     <div style={{ minHeight: '100vh', background: 'var(--bg-main)' }}>
@@ -235,8 +273,6 @@ export default function ShareContent({ vehicle, documents, expiresAt }: ShareCon
                     const isImage = imageIndex !== -1;
                     const hasUrl = !!doc.url;
                     
-                    // For images: open in lightbox gallery
-                    // For other files (PDF, etc.): open in new tab
                     const handleClick = () => {
                       if (isImage) {
                         openGalleryAt(imageIndex);
@@ -408,23 +444,195 @@ export default function ShareContent({ vehicle, documents, expiresAt }: ShareCon
         </div>
       </footer>
 
-      {/* Lightbox Gallery */}
-      <Lightbox
-        open={galleryOpen}
-        close={() => setGalleryOpen(false)}
-        index={galleryIndex}
-        on={{ view: ({ index }) => setGalleryIndex(index) }}
-        slides={slides}
-        plugins={[Captions, Counter]}
-        captions={{ 
-          showToggle: true,
-          descriptionTextAlign: 'center',
-          descriptionMaxLines: 3 
-        }}
-        styles={{
-          container: { backgroundColor: 'rgba(0, 0, 0, 0.95)' },
-        }}
-      />
+      {/* Custom Image Gallery Modal */}
+      {galleryOpen && currentImage && (
+        <div 
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: 'rgba(0, 0, 0, 0.95)',
+            zIndex: 9999,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+          onClick={closeGallery}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+        >
+          {/* Close button */}
+          <button
+            onClick={closeGallery}
+            style={{
+              position: 'absolute',
+              top: '1rem',
+              right: '1rem',
+              background: 'rgba(255,255,255,0.1)',
+              border: 'none',
+              borderRadius: '50%',
+              width: '44px',
+              height: '44px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              cursor: 'pointer',
+              zIndex: 10001,
+            }}
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          </button>
+
+          {/* Counter */}
+          <div
+            style={{
+              position: 'absolute',
+              top: '1rem',
+              left: '1rem',
+              color: 'white',
+              fontSize: '0.9rem',
+              fontWeight: 600,
+              background: 'rgba(255,255,255,0.1)',
+              padding: '0.5rem 1rem',
+              borderRadius: '50px',
+            }}
+          >
+            {galleryIndex + 1} / {imageDocuments.length}
+          </div>
+
+          {/* Swipe hint - only on mobile */}
+          {imageDocuments.length > 1 && (
+            <div
+              className="swipe-hint"
+              style={{
+                position: 'absolute',
+                bottom: '1rem',
+                left: '50%',
+                transform: 'translateX(-50%)',
+                color: 'rgba(255,255,255,0.5)',
+                fontSize: '0.8rem',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+              }}
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <polyline points="15 18 9 12 15 6" />
+              </svg>
+              Swipe for å bla
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <polyline points="9 18 15 12 9 6" />
+              </svg>
+            </div>
+          )}
+
+          {/* Previous button - hidden on mobile, use swipe instead */}
+          {imageDocuments.length > 1 && (
+            <button
+              onClick={(e) => { e.stopPropagation(); goToPrev(); }}
+              className="gallery-nav-btn"
+              style={{
+                position: 'absolute',
+                left: '1rem',
+                top: '50%',
+                transform: 'translateY(-50%)',
+                background: 'rgba(255,255,255,0.15)',
+                border: 'none',
+                borderRadius: '50%',
+                width: '48px',
+                height: '48px',
+                display: 'none',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: 'pointer',
+                zIndex: 10001,
+              }}
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
+                <polyline points="15 18 9 12 15 6" />
+              </svg>
+            </button>
+          )}
+
+          {/* Next button - hidden on mobile, use swipe instead */}
+          {imageDocuments.length > 1 && (
+            <button
+              onClick={(e) => { e.stopPropagation(); goToNext(); }}
+              className="gallery-nav-btn"
+              style={{
+                position: 'absolute',
+                right: '1rem',
+                top: '50%',
+                transform: 'translateY(-50%)',
+                background: 'rgba(255,255,255,0.15)',
+                border: 'none',
+                borderRadius: '50%',
+                width: '48px',
+                height: '48px',
+                display: 'none',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: 'pointer',
+                zIndex: 10001,
+              }}
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
+                <polyline points="9 18 15 12 9 6" />
+              </svg>
+            </button>
+          )}
+
+          {/* Image */}
+          <div
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              maxWidth: '90vw',
+              maxHeight: '70vh',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
+            <img
+              src={currentImage.url!}
+              alt={currentImage.title || 'Dokument'}
+              style={{
+                maxWidth: '100%',
+                maxHeight: '70vh',
+                objectFit: 'contain',
+                borderRadius: '8px',
+              }}
+            />
+          </div>
+
+          {/* Caption */}
+          <div
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              marginTop: '1.5rem',
+              textAlign: 'center',
+              color: 'white',
+              maxWidth: '600px',
+              padding: '0 2rem',
+            }}
+          >
+            <p style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.5rem' }}>
+              {currentImage.title}
+            </p>
+            {currentImage.note && (
+              <p style={{ fontSize: '0.9rem', opacity: 0.7, lineHeight: 1.5 }}>
+                {currentImage.note}
+              </p>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

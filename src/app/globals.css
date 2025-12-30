@@ -1491,3 +1491,18 @@ footer {
     flex-direction: column;
   }
 }
+
+/* Gallery navigation buttons - show on desktop only */
+@media (min-width: 769px) {
+  .gallery-nav-btn {
+    display: flex !important;
+  }
+  
+  .gallery-nav-btn:hover {
+    background: rgba(255,255,255,0.25) !important;
+  }
+  
+  .swipe-hint {
+    display: none !important;
+  }
+}
