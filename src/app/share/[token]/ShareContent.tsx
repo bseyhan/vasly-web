@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import Link from 'next/link';
 import Lightbox from 'yet-another-react-lightbox';
 import Captions from 'yet-another-react-lightbox/plugins/captions';
@@ -64,17 +64,24 @@ export default function ShareContent({ vehicle, documents, expiresAt }: ShareCon
   const years = Object.keys(grouped).sort((a, b) => parseInt(b) - parseInt(a));
 
   // Build slides for lightbox - only include documents with valid image URLs
-  const imageDocuments = documents.filter(doc => 
-    doc.url && 
-    doc.mime_type.startsWith('image/')
+  // Memoize to keep stable array reference (required by yet-another-react-lightbox)
+  const imageDocuments = useMemo(() => 
+    documents.filter(doc => 
+      doc.url && 
+      doc.mime_type.startsWith('image/')
+    ), 
+    [documents]
   );
 
-  const slides = imageDocuments.map(doc => ({
-    src: doc.url!,
-    alt: doc.title || 'Dokument',
-    title: doc.title || 'Dokument',
-    description: doc.note || undefined,
-  }));
+  const slides = useMemo(() => 
+    imageDocuments.map(doc => ({
+      src: doc.url!,
+      alt: doc.title || 'Dokument',
+      title: doc.title || 'Dokument',
+      description: doc.note || undefined,
+    })),
+    [imageDocuments]
+  );
 
   // Find the index in imageDocuments for a given document
   const getImageIndex = (docId: string): number => {
