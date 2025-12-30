@@ -31,6 +31,7 @@ interface ShareContentProps {
 export default function ShareContent({ vehicle, documents, expiresAt }: ShareContentProps) {
   const [galleryOpen, setGalleryOpen] = useState(false);
   const [galleryIndex, setGalleryIndex] = useState(0);
+  const [singleViewMode, setSingleViewMode] = useState(false); // true = single doc, no navigation
   const [touchStart, setTouchStart] = useState<number | null>(null);
 
   const expiresDate = new Date(expiresAt);
@@ -72,13 +73,23 @@ export default function ShareContent({ vehicle, documents, expiresAt }: ShareCon
     return imageDocuments.findIndex(d => d.id === docId);
   };
 
+  // Open single document view (no navigation)
+  const openSingleView = (index: number) => {
+    setGalleryIndex(index);
+    setSingleViewMode(true);
+    setGalleryOpen(true);
+  };
+
+  // Open full gallery (with navigation)
   const openGalleryAt = (index: number) => {
     setGalleryIndex(index);
+    setSingleViewMode(false);
     setGalleryOpen(true);
   };
 
   const closeGallery = useCallback(() => {
     setGalleryOpen(false);
+    setSingleViewMode(false);
   }, []);
 
   const goToPrev = useCallback(() => {
@@ -95,7 +106,8 @@ export default function ShareContent({ vehicle, documents, expiresAt }: ShareCon
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') closeGallery();
-      if (imageDocuments.length > 1) {
+      // Only allow navigation in gallery mode (not single view)
+      if (!singleViewMode && imageDocuments.length > 1) {
         if (e.key === 'ArrowLeft') goToPrev();
         if (e.key === 'ArrowRight') goToNext();
       }
@@ -108,17 +120,17 @@ export default function ShareContent({ vehicle, documents, expiresAt }: ShareCon
       document.removeEventListener('keydown', handleKeyDown);
       document.body.style.overflow = '';
     };
-  }, [galleryOpen, closeGallery, goToPrev, goToNext]);
+  }, [galleryOpen, closeGallery, goToPrev, goToNext, singleViewMode]);
 
-  // Touch handlers for swipe - only if multiple images
+  // Touch handlers for swipe - only in gallery mode (not single view)
   const handleTouchStart = (e: React.TouchEvent) => {
-    if (imageDocuments.length > 1) {
+    if (!singleViewMode && imageDocuments.length > 1) {
       setTouchStart(e.touches[0].clientX);
     }
   };
 
   const handleTouchEnd = (e: React.TouchEvent) => {
-    if (touchStart === null || imageDocuments.length <= 1) return;
+    if (touchStart === null || singleViewMode || imageDocuments.length <= 1) return;
     
     const touchEnd = e.changedTouches[0].clientX;
     const diff = touchStart - touchEnd;
@@ -279,7 +291,8 @@ export default function ShareContent({ vehicle, documents, expiresAt }: ShareCon
                     
                     const handleClick = () => {
                       if (isImage) {
-                        openGalleryAt(imageIndex);
+                        // Single document click = single view mode (no navigation)
+                        openSingleView(imageIndex);
                       } else if (hasUrl) {
                         window.open(doc.url!, '_blank', 'noopener,noreferrer');
                       }
@@ -493,25 +506,27 @@ export default function ShareContent({ vehicle, documents, expiresAt }: ShareCon
             </svg>
           </button>
 
-          {/* Counter */}
-          <div
-            style={{
-              position: 'absolute',
-              top: '1rem',
-              left: '1rem',
-              color: 'white',
-              fontSize: '0.9rem',
-              fontWeight: 600,
-              background: 'rgba(255,255,255,0.1)',
-              padding: '0.5rem 1rem',
-              borderRadius: '50px',
-            }}
-          >
-            {galleryIndex + 1} / {imageDocuments.length}
-          </div>
+          {/* Counter - only show in gallery mode */}
+          {!singleViewMode && imageDocuments.length > 1 && (
+            <div
+              style={{
+                position: 'absolute',
+                top: '1rem',
+                left: '1rem',
+                color: 'white',
+                fontSize: '0.9rem',
+                fontWeight: 600,
+                background: 'rgba(255,255,255,0.1)',
+                padding: '0.5rem 1rem',
+                borderRadius: '50px',
+              }}
+            >
+              {galleryIndex + 1} / {imageDocuments.length}
+            </div>
+          )}
 
-          {/* Swipe hint - only on mobile */}
-          {imageDocuments.length > 1 && (
+          {/* Swipe hint - only in gallery mode on mobile */}
+          {!singleViewMode && imageDocuments.length > 1 && (
             <div
               className="swipe-hint"
               style={{
@@ -536,8 +551,8 @@ export default function ShareContent({ vehicle, documents, expiresAt }: ShareCon
             </div>
           )}
 
-          {/* Previous button - hidden on mobile, use swipe instead */}
-          {imageDocuments.length > 1 && (
+          {/* Previous button - only in gallery mode, hidden on mobile */}
+          {!singleViewMode && imageDocuments.length > 1 && (
             <button
               onClick={(e) => { e.stopPropagation(); goToPrev(); }}
               className="gallery-nav-btn"
@@ -564,8 +579,8 @@ export default function ShareContent({ vehicle, documents, expiresAt }: ShareCon
             </button>
           )}
 
-          {/* Next button - hidden on mobile, use swipe instead */}
-          {imageDocuments.length > 1 && (
+          {/* Next button - only in gallery mode, hidden on mobile */}
+          {!singleViewMode && imageDocuments.length > 1 && (
             <button
               onClick={(e) => { e.stopPropagation(); goToNext(); }}
               className="gallery-nav-btn"
