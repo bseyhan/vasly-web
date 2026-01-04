@@ -182,42 +182,42 @@ export default function Personvern() {
           <section>
             <h2 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--text-primary)' }}>7. Tredjeparter</h2>
             <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7, marginBottom: '1rem' }}>
-              Vi selger aldri dine personopplysninger. Vi deler kun data med følgende tjenester:
+              Vi selger aldri dine personopplysninger. Vi deler kun data med følgende kategorier av tjenester:
             </p>
             <div style={{ background: 'white', borderRadius: '12px', padding: '1.5rem', overflowX: 'auto' }}>
-              <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: '500px' }}>
+              <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: '400px' }}>
                 <thead>
                   <tr style={{ borderBottom: '2px solid rgba(0,0,0,0.1)' }}>
-                    <th style={{ padding: '0.75rem 0.5rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-primary)' }}>Tjeneste</th>
+                    <th style={{ padding: '0.75rem 0.5rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-primary)' }}>Kategori</th>
                     <th style={{ padding: '0.75rem 0.5rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-primary)' }}>Formål</th>
                     <th style={{ padding: '0.75rem 0.5rem', textAlign: 'left', fontWeight: 600, color: 'var(--text-primary)' }}>Data</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr style={{ borderBottom: '1px solid rgba(0,0,0,0.05)' }}>
-                    <td style={{ padding: '0.75rem 0.5rem', color: 'var(--text-secondary)' }}>Supabase</td>
                     <td style={{ padding: '0.75rem 0.5rem', color: 'var(--text-secondary)' }}>Database & lagring</td>
+                    <td style={{ padding: '0.75rem 0.5rem', color: 'var(--text-secondary)' }}>Sikker lagring av brukerdata</td>
                     <td style={{ padding: '0.75rem 0.5rem', color: 'var(--text-secondary)' }}>Alt brukerdata (EU-server)</td>
                   </tr>
                   <tr style={{ borderBottom: '1px solid rgba(0,0,0,0.05)' }}>
-                    <td style={{ padding: '0.75rem 0.5rem', color: 'var(--text-secondary)' }}>OpenAI</td>
+                    <td style={{ padding: '0.75rem 0.5rem', color: 'var(--text-secondary)' }}>AI-tjeneste</td>
                     <td style={{ padding: '0.75rem 0.5rem', color: 'var(--text-secondary)' }}>AI-mekaniker</td>
                     <td style={{ padding: '0.75rem 0.5rem', color: 'var(--text-secondary)' }}>Bildata + spørsmål (ingen PII)</td>
                   </tr>
                   <tr style={{ borderBottom: '1px solid rgba(0,0,0,0.05)' }}>
-                    <td style={{ padding: '0.75rem 0.5rem', color: 'var(--text-secondary)' }}>Mixpanel</td>
-                    <td style={{ padding: '0.75rem 0.5rem', color: 'var(--text-secondary)' }}>Analytics</td>
+                    <td style={{ padding: '0.75rem 0.5rem', color: 'var(--text-secondary)' }}>Analyse</td>
+                    <td style={{ padding: '0.75rem 0.5rem', color: 'var(--text-secondary)' }}>Forbedring av tjenesten</td>
                     <td style={{ padding: '0.75rem 0.5rem', color: 'var(--text-secondary)' }}>Anonyme events (opt-out mulig)</td>
                   </tr>
                   <tr style={{ borderBottom: '1px solid rgba(0,0,0,0.05)' }}>
-                    <td style={{ padding: '0.75rem 0.5rem', color: 'var(--text-secondary)' }}>Expo</td>
                     <td style={{ padding: '0.75rem 0.5rem', color: 'var(--text-secondary)' }}>Push-varsler</td>
+                    <td style={{ padding: '0.75rem 0.5rem', color: 'var(--text-secondary)' }}>Sende varsler til din enhet</td>
                     <td style={{ padding: '0.75rem 0.5rem', color: 'var(--text-secondary)' }}>Push-token</td>
                   </tr>
                   <tr>
-                    <td style={{ padding: '0.75rem 0.5rem', color: 'var(--text-secondary)' }}>Statens vegvesen</td>
+                    <td style={{ padding: '0.75rem 0.5rem', color: 'var(--text-secondary)' }}>Offentlig API</td>
                     <td style={{ padding: '0.75rem 0.5rem', color: 'var(--text-secondary)' }}>Kjøretøyoppslag</td>
-                    <td style={{ padding: '0.75rem 0.5rem', color: 'var(--text-secondary)' }}>Regnr (offentlig API)</td>
+                    <td style={{ padding: '0.75rem 0.5rem', color: 'var(--text-secondary)' }}>Registreringsnummer</td>
                   </tr>
                 </tbody>
               </table>
