@@ -157,9 +157,9 @@ export default function Personvern() {
 
           {/* 6. AI-mekaniker */}
           <section>
-            <h2 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--text-primary)' }}>6. AI-mekaniker (OpenAI)</h2>
+            <h2 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--text-primary)' }}>6. AI-mekaniker</h2>
             
-            <h3 style={{ fontSize: '1.15rem', fontWeight: 600, marginBottom: '0.5rem', color: 'var(--text-primary)' }}>Data som sendes til OpenAI</h3>
+            <h3 style={{ fontSize: '1.15rem', fontWeight: 600, marginBottom: '0.5rem', color: 'var(--text-primary)' }}>Data som sendes til AI-tjenesten</h3>
             <ul style={{ color: 'var(--text-secondary)', lineHeight: 1.8, marginBottom: '1.5rem', paddingLeft: '1.5rem' }}>
               <li>Bildata: merke, modell, årsmodell, km-stand, drivstofftype</li>
               <li>Ditt spørsmål</li>
@@ -173,7 +173,7 @@ export default function Personvern() {
               <li>Dokumenter</li>
             </ul>
             <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7 }}>
-              OpenAI bruker ikke API-data til trening av modeller. AI-mekanikeren gir kun veiledende 
+              Data brukes ikke til trening av AI-modeller. AI-mekanikeren gir kun veiledende 
               svar og er ikke en erstatning for profesjonelt verksted.
             </p>
           </section>
