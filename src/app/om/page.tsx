@@ -51,7 +51,7 @@ export default function OmVasly() {
             border: '1px solid rgba(0,0,0,0.05)'
           }}>
             <p style={{ color: 'var(--text-secondary)', lineHeight: 1.8, marginBottom: '1.5rem' }}>
-              Vasly ble startet i 2025 med én enkel idé: å gjøre bilhold mindre komplisert for norske bilførere. 
+              Vasly ble startet i 2026 med én enkel idé: å gjøre bilhold mindre komplisert for norske bilførere. 
               Etter å ha glemt EU-kontroll én gang for mange, bestemte vi oss for å lage en løsning som kunne 
               hjelpe andre å unngå det samme.
             </p>
@@ -66,7 +66,7 @@ export default function OmVasly() {
         {/* Values Section */}
         <section style={{ marginBottom: '3rem' }}>
           <h2 style={{ fontSize: '1.75rem', fontWeight: 700, marginBottom: '1.5rem', color: 'var(--text-primary)' }}>
-            Verdier
+            Våre verdier
           </h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1.5rem' }}>
             <div style={{ 

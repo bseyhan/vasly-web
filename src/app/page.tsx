@@ -265,14 +265,6 @@ export default function Home() {
               </p>
             </div>
             <div className="feature-card">
-              <div className="feature-icon navy">🔗</div>
-              <h3 className="feature-title">Vegvesen-integrasjon</h3>
-              <p className="feature-description">
-                Legg til bilen med bare registreringsnummeret. Vi henter automatisk all 
-                informasjon fra Statens vegvesen – merke, modell, og EU-dato.
-              </p>
-            </div>
-            <div className="feature-card">
               <div className="feature-icon orange">🚗</div>
               <h3 className="feature-title">Flere biler</h3>
               <p className="feature-description">
