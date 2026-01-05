@@ -23,8 +23,8 @@ export default function Home() {
             <div className="hero-badge desktop-only">🇳🇴 Laget for norske bilførere</div>
             <h1>Hold bilen din i <span>toppform</span></h1>
             <p className="hero-description">
-              Vasly hjelper deg med å huske EU-kontroll og bytte dekk til riktig tid – 
-              med smarte påminnelser og en AI-mekaniker som kjenner din bil.
+              Vasly holder styr på bilen din – EU-kontroll, dekkskift, forsikringsgrense 
+              og markedsverdi. Alt på ett sted.
             </p>
             <div className="hero-buttons desktop-only">
               <a href="https://apps.apple.com/no/app/vasly/id6756527671" className="btn-primary">
@@ -288,6 +288,38 @@ export default function Home() {
                 Lær hvordan du sparer penger og holder bilen i god stand.
               </p>
             </div>
+            <div className="feature-card">
+              <div className="feature-icon green">💰</div>
+              <h3 className="feature-title">Prisestimat</h3>
+              <p className="feature-description">
+                Se hva bilen din er verdt. Vi sammenligner med tilsvarende biler 
+                på markedet og oppdaterer verdien automatisk hver måned.
+              </p>
+            </div>
+            <div className="feature-card">
+              <div className="feature-icon navy">📁</div>
+              <h3 className="feature-title">Salgsmappe</h3>
+              <p className="feature-description">
+                Samle kvitteringer, servicehistorikk og dokumenter på ett sted. 
+                Del enkelt med kjøper når du selger – dokumentert bil selges raskere.
+              </p>
+            </div>
+            <div className="feature-card">
+              <div className="feature-icon blue">📊</div>
+              <h3 className="feature-title">Forsikringsgrense</h3>
+              <p className="feature-description">
+                Hold styr på hvor mye du kjører i forhold til forsikringsgrensen. 
+                Få varsel ved 80%, 90% og 100% – unngå overraskelser.
+              </p>
+            </div>
+            <div className="feature-card">
+              <div className="feature-icon orange">🔄</div>
+              <h3 className="feature-title">Overfør til ny eier</h3>
+              <p className="feature-description">
+                Selger du bilen til en annen Vasly-bruker? Overfør dokumenter og 
+                historikk til kjøper med en 6-tegns kode. Alt følger med bilen.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -373,7 +405,7 @@ export default function Home() {
             </div>
           </div>
           <div className="footer-right">
-            © 2025 Vasly
+            © 2026 Vasly
           </div>
         </div>
       </footer>
