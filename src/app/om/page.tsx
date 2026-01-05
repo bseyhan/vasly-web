@@ -51,7 +51,7 @@ export default function OmVasly() {
             border: '1px solid rgba(0,0,0,0.05)'
           }}>
             <p style={{ color: 'var(--text-secondary)', lineHeight: 1.8, marginBottom: '1.5rem' }}>
-              Vasly ble startet i 2024 med én enkel idé: å gjøre bilhold mindre komplisert for norske bilførere. 
+              Vasly ble startet i 2025 med én enkel idé: å gjøre bilhold mindre komplisert for norske bilførere. 
               Etter å ha glemt EU-kontroll én gang for mange, bestemte vi oss for å lage en løsning som kunne 
               hjelpe andre å unngå det samme.
             </p>
@@ -66,7 +66,7 @@ export default function OmVasly() {
         {/* Values Section */}
         <section style={{ marginBottom: '3rem' }}>
           <h2 style={{ fontSize: '1.75rem', fontWeight: 700, marginBottom: '1.5rem', color: 'var(--text-primary)' }}>
-            Våre verdier
+            Verdier
           </h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1.5rem' }}>
             <div style={{ 
@@ -135,10 +135,10 @@ export default function OmVasly() {
           </div>
         </section>
 
-        {/* Team Section */}
+        {/* Developer Section */}
         <section style={{ marginBottom: '3rem' }}>
           <h2 style={{ fontSize: '1.75rem', fontWeight: 700, marginBottom: '1.5rem', color: 'var(--text-primary)' }}>
-            Teamet bak Vasly
+            Utvikleren
           </h2>
           <div style={{ 
             background: 'white', 
@@ -148,9 +148,9 @@ export default function OmVasly() {
             border: '1px solid rgba(0,0,0,0.05)'
           }}>
             <p style={{ color: 'var(--text-secondary)', lineHeight: 1.8 }}>
-              Vasly er utviklet av et lite, dedikert team basert i Norge. Vi brenner for å lage 
-              produkter som gjør hverdagen enklere for folk flest. Med bakgrunn innen teknologi og 
-              en forkjærlighet for biler, jobber vi hver dag for å gjøre Vasly bedre.
+              Vasly er utviklet av én person med en lidenskap for å lage produkter som gjør hverdagen 
+              enklere. Med bakgrunn innen teknologi og en forkjærlighet for biler, jobber jeg hver dag 
+              for å gjøre Vasly bedre for alle norske bilførere.
             </p>
           </div>
         </section>
@@ -202,7 +202,7 @@ export default function OmVasly() {
         borderTop: '1px solid rgba(0,0,0,0.05)',
         marginTop: '2rem'
       }}>
-        <p>© 2025 Vasly</p>
+        <p>© 2026 Vasly</p>
       </footer>
     </div>
   );
