@@ -16,7 +16,7 @@ export default function Support() {
           Support
         </h1>
         <p style={{ color: 'var(--text-muted)', marginBottom: '3rem' }}>
-          Vi er her for å hjelpe deg
+          Trenger du hjelp? Finn svar her.
         </p>
 
         {/* Contact Cards */}
@@ -156,8 +156,75 @@ export default function Support() {
                 Hvor henter dere EU-kontroll datoen fra?
               </h3>
               <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7 }}>
-                Vi henter kjøretøyinformasjon direkte fra Statens vegvesen sitt offentlige API. 
+                Kjøretøyinformasjon hentes direkte fra Statens vegvesen sitt offentlige API. 
                 Dataen oppdateres automatisk basert på hvor nær EU-kontrollen er.
+              </p>
+            </div>
+
+            <div style={{ 
+              background: 'white', 
+              padding: '1.5rem', 
+              borderRadius: '16px', 
+              boxShadow: '0 2px 12px rgba(0,0,0,0.06)',
+              border: '1px solid rgba(0,0,0,0.05)'
+            }}>
+              <h3 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.5rem', color: 'var(--text-primary)' }}>
+                Hvordan fungerer prisestimatet?
+              </h3>
+              <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7 }}>
+                Prisestimatet er basert på tilsvarende biler på markedet med samme merke, modell, 
+                årsmodell og kilometerstand. Verdien oppdateres automatisk den 1. hver måned. 
+                Merk at dette er et estimat og faktisk salgspris kan variere.
+              </p>
+            </div>
+
+            <div style={{ 
+              background: 'white', 
+              padding: '1.5rem', 
+              borderRadius: '16px', 
+              boxShadow: '0 2px 12px rgba(0,0,0,0.06)',
+              border: '1px solid rgba(0,0,0,0.05)'
+            }}>
+              <h3 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.5rem', color: 'var(--text-primary)' }}>
+                Hva er forsikringsgrense?
+              </h3>
+              <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7 }}>
+                Forsikringsgrense hjelper deg å holde oversikt over hvor mye du kjører i forhold 
+                til kilometergrensen på forsikringen din. Legg inn grensen og oppdater kjørelengden 
+                jevnlig – du får varsler ved 80%, 90% og 100% for å unngå overraskelser.
+              </p>
+            </div>
+
+            <div style={{ 
+              background: 'white', 
+              padding: '1.5rem', 
+              borderRadius: '16px', 
+              boxShadow: '0 2px 12px rgba(0,0,0,0.06)',
+              border: '1px solid rgba(0,0,0,0.05)'
+            }}>
+              <h3 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.5rem', color: 'var(--text-primary)' }}>
+                Hva er Salgsmappe?
+              </h3>
+              <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7 }}>
+                Salgsmappe lar deg samle kvitteringer, servicehistorikk og andre dokumenter 
+                på ett sted. Når du selger bilen kan du enkelt dele en lenke med kjøper. 
+                En dokumentert bil selges ofte raskere og for høyere pris.
+              </p>
+            </div>
+
+            <div style={{ 
+              background: 'white', 
+              padding: '1.5rem', 
+              borderRadius: '16px', 
+              boxShadow: '0 2px 12px rgba(0,0,0,0.06)',
+              border: '1px solid rgba(0,0,0,0.05)'
+            }}>
+              <h3 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.5rem', color: 'var(--text-primary)' }}>
+                Kan jeg overføre bilen til ny eier?
+              </h3>
+              <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7 }}>
+                Ja! Hvis kjøperen også bruker Vasly, kan du overføre bilen med alle dokumenter 
+                og historikk ved hjelp av en 6-tegns kode. Gå til Salgsmappe → Overfør til ny eier.
               </p>
             </div>
           </div>
@@ -199,6 +266,17 @@ export default function Support() {
           </a>
         </section>
       </div>
+
+      {/* Footer */}
+      <footer style={{ 
+        textAlign: 'center', 
+        padding: '2rem', 
+        color: 'var(--text-muted)',
+        borderTop: '1px solid rgba(0,0,0,0.05)',
+        marginTop: '2rem'
+      }}>
+        <p>© 2026 Vasly</p>
+      </footer>
     </div>
   );
 }
